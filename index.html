@@ -43,32 +43,60 @@ body {
 </style>
 
 <Script>
-var w = c.width = window.innerWidth,
-		h = c.height = window.innerHeight,
-		ctx = c.getContext( '2d' ),
 		
-		hw = w / 2, // half-width
-		hh = h / 2,
-		
-		opts = {
-			strings: [ 'HAPPY', 'BIRTHDAY', ' MOM!' ],
-			charSize: 30,
-			charSpacing: 35,
-			lineHeight: 40,
-			
-			cx: w / 2,
-			cy: h / 2,
-			
-			fireworkPrevPoints: 10,
-			fireworkBaseLineWidth: 5,
-			fireworkAddedLineWidth: 8,
-			fireworkSpawnTime: 200,
-			fireworkBaseReachTime: 30,
-			fireworkAddedReachTime: 30,
-			fireworkCircleBaseSize: 20,
-			fireworkCircleAddedSize: 10,
-			fireworkCircleBaseTime: 30,
-			fireworkCircleAddedTime: 30,
+		letters[ l ].step();
+		if( letters[ l ].phase !== 'done' )
+			done = false;
+	}
+	
+	ctx.translate( -hw, -hh );
+	
+	if( done )
+		for( var l = 0; l < letters.length; ++l )
+			letters[ l ].reset();
+}
+
+for( var i = 0; i < opts.strings.length; ++i ){
+	for( var j = 0; j < opts.strings[ i ].length; ++j ){
+		letters.push( new Letter( opts.strings[ i ][ j ], 
+														j * opts.charSpacing + opts.charSpacing / 2 - opts.strings[ i ].length * opts.charSize / 2,
+														i * opts.lineHeight + opts.lineHeight / 2 - opts.strings.length * opts.lineHeight / 2 ) );
+	}
+}
+
+anim();
+
+window.addEventListener( 'resize', function(){
+	
+	w = c.width = window.innerWidth;
+	h = c.height = window.innerHeight;
+	
+	hw = w / 2;
+	hh = h / 2;
+	
+	
+	ctx.font = op
+for( var i = 0; i < opts.strings.length; ++i ){
+	for( var j = 0; j < opts.strings[ i ].length; ++j ){
+		letters.push( new Letter( opts.strings[ i ][ j ], 
+														j * opts.charSpacing + opts.charSpacing / 2 - opts.strings[ i ].length * opts.charSize / 2,
+														i * opts.lineHeight + opts.lineHeight / 2 - opts.strings.length * opts.lineHeight / 2 ) );
+	}
+}
+
+anim();
+
+window.addEventListener( 'resize', function(){
+	
+	w = c.width = window.innerWidth;
+	h = c.height = window.innerHeight;
+	
+	hw = w / 2;
+	hh = h / 2;
+	
+	ctx.font = opts.charSize + 'px Verdana';
+})ts.charSize + 'px Verdana';
+})
 </Script>
 
 </body>
