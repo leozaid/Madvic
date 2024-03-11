@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
- /* Estilo para el texto con color rojo */
- .rojo {
-	color: red;
-  }
-
-  /* Estilo para el texto con color azul */
-  .azul {
-	color: blue;
-  }
-
-
-  
 .Ver li {
 	list-style: none;
 }
