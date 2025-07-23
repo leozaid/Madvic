@@ -1,516 +1,390 @@
-	<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0"	/>
-		<title>Madvic</title>
-		<link rel="stylesheet" href="styles.css" />
-	</head>
-	<body>
-		<header>
-		<div class="container-navbar">
-				<nav class="navbar container">
-					<i class="fa-solid fa-bars"></i>
-					<ul class="menu">
-						<li><a href="index.html">Inicio</a></li>
-						<li><a href="Collares.html">Collares</a></li>
-						<li><a href="Pulseras.Html">Pulseras</a></li>
-						<li><a href="Anillos.html">Anillos</a></li>
-					</ul>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💖 UN DÍA ESPECIAL 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rojo: #d62828;
+      --rosa: #ff5d8f;
+      --negro: #000000;
+      --fondo: #111111;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--negro);
+      color: var(--rosa);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #fondo-animado {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background-color: var(--negro);
+      overflow: hidden;
+      z-index: 0;
+    }
+    .elemento-flotante {
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+      animation-timing-function: ease-in-out;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 3px var(--rosa));
+    }
+    .corazon { width: 30px; height: 30px; fill: var(--rosa); animation-name: flotar-corazon; animation-iteration-count: infinite; }
+    .beso { width: 28px; height: 28px; fill: var(--rojo); animation-name: flotar-beso; animation-iteration-count: infinite; }
+    .globo { width: 26px; height: 40px; fill: var(--rojo); animation-name: flotar-globo; animation-iteration-count: infinite; }
+    @keyframes flotar-corazon {
+      0% { transform: translateY(110vh) rotate(0) scale(1); opacity: 0; }
+      20% { opacity: 1; }
+      50% { transform: translateY(40vh) rotate(180deg) scale(1.1); opacity: 0.8; }
+      100% { transform: translateY(-20vh) rotate(360deg) scale(1); opacity: 0; }
+    }
+    @keyframes flotar-beso {
+      0% { transform: translateY(110vh) rotate(10deg) scale(1); opacity: 0; }
+      25% { opacity: 1; }
+      55% { transform: translateY(30vh) rotate(-170deg) scale(1.2); opacity: 0.85; }
+      100% { transform: translateY(-20vh) rotate(350deg) scale(1); opacity: 0; }
+    }
+    @keyframes flotar-globo {
+      0% { transform: translateY(110vh) rotate(-10deg) scale(1); opacity: 0; }
+      25% { opacity: 1; }
+      55% { transform: translateY(25vh) rotate(160deg) scale(1.1); opacity: 0.75; }
+      100% { transform: translateY(-30vh) rotate(360deg) scale(1); opacity: 0; }
+    }
+    section {
+      display: none;
+      min-height: 100vh;
+      padding: 2rem 1rem 7rem;
+      position: relative;
+      z-index: 10;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    section.activo {
+      display: block;
+    }
+    #texto-feliz {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--rosa);
+      text-shadow: 0 0 15px var(--rosa), 0 0 30px var(--rojo);
+      margin-top: 40vh;
+      min-height: 6rem;
+      user-select: none;
+    }
+    #texto-mananas {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: var(--rosa);
+      max-width: 600px;
+      margin: 10vh auto 0;
+      line-height: 1.4;
+      opacity: 0;
+      animation: fadeInText 1.2s forwards;
+    }
+    @keyframes fadeInText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    #contenido-paso-a-paso {
+      margin-top: 3rem;
+      min-height: 360px;
+    }
+    #contenido-paso-a-paso img, #contenido-paso-a-paso video {
+      max-width: 280px;
+      width: 80vw;
+      border-radius: 15px;
+      box-shadow: 0 0 20px var(--rosa);
+      margin: 18px auto 5px;
+      display: block;
+    }
+    #texto-romantico {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.7rem;
+      color: var(--rojo);
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 1rem;
+    }
+    button {
+      background: var(--rosa);
+      color: var(--negro);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 0 10px var(--rosa);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background: var(--rojo);
+      color: white;
+    }
+    audio {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 20;
+      border-radius: 12px;
+      outline: none;
+      box-shadow: 0 0 12px var(--rosa);
+    }
+  </style>
+</head>
+<body>
 
-					<form class="search-form">
-						<input type="search" placeholder="Buscar..." />
-						<button class="btn-search">
-							<i class="fa-solid fa-magnifying-glass"></i>
-						</button>
-					</form>
-				</nav>
-			</div>
-		</header>
+  <div id="fondo-animado" aria-hidden="true"></div>
 
-		<section class="banner">
-			<div class="content-banner">
-				<h2>Creadas<br />Para captar miradas</h2>
-				<a href="#">Comprar ahora</a>
-			</div>
-		</section>
+  <section id="seccion-feliz" class="activo">
+    <div id="texto-feliz"></div>
+  </section>
 
-		<main class="main-content">
-			<section class="container container-features">
-				<div class="card-feature">
-					<i class="fa-solid fa-plane-up"></i>
-					<div class="feature-content">
-						<span>Envío gratuito a nivel mundial</span>
-						<p>En pedido superior a $150</p>
-					</div>
-				</div>
-				<div class="card-feature">
-					<i class="fa-solid fa-wallet"></i>
-					<div class="feature-content">
-						<span>Contrareembolso</span>
-						<p>100% garantía de devolución de dinero</p>
-					</div>
-				</div>
-				<div class="card-feature">
-					<i class="fa-solid fa-gift"></i>
-					<div class="feature-content">
-						<span>Pagos seguros</span>
-						<p>Ofrecemos pagos en linea seguros</p>
-					</div>
-				</div>
-				<div class="card-feature">
-					<i class="fa-solid fa-headset"></i>
-					<div class="feature-content">
-						<span>Servicio al cliente 24/7</span>
-						<p>LLámenos 24/7 al 771-113-0393</p>
-					</div>
-				</div>
-			</section>
+  <section id="seccion-presentacion">
+    <div id="texto-mananas">
+      💖 Estas son las mañanitas que cantaba el Rey David,<br>
+      Hoy por ser tu cumpleaños, te las canto a ti.<br>
+      Despierta, mi niña, despierta, mira que ya amaneció,<br>
+      Ya los pajarillos cantan, la luna ya se metió. 💖
+    </div>
+  </section>
 
-			<section class="container top-categories">
-				<h1 class="heading-1">Nuestras colecciones</h1>
-				<div class="container-categories">
-					<div class="card-category category-moca">
-						<p>PULSERAS</p>
-						<ul class="menu">
-							<li><a href="Pulseras.Html">Ver mas</a></li>
-						</ul>
-					</div>
-					<div class="card-category category-expreso">
-						<p>COLLARES</p>
-						<ul class="menu">
-							<li><a href="Collares.html">Ver mas</a></li>
-						</ul>
-					</div>
-					<div class="card-category category-expreso">
-						<p>Anillos</p>
-					<ul class="menu">
-						<li><a href="Anillos.html">Ver mas</a></li>
-					</ul>
-					</div>
-				</div>
-			</section>
-        <section>
-			<h1 class="rojo">Este es un título con letras rojas</h1>
-		</section> <br><br><br>
+  <section id="seccion-seguir">
+    <div id="texto-romantico"></div>
+    <div id="contenido-paso-a-paso"></div>
+    <div class="botones">
+      <button id="btnAtras">¿¿Regresamos o nadota?? 💖</button>
+      <button id="btnSiguiente">Veamos que hay adelante 💖 </button>
+      <button id="btnInicio" style="display:none;">¿Volvemos al incio mi niña? 💖</button>
+    </div>
+  </section>
 
-			<section class="container top-products">
-				<div class="container-products">
-					<!-- Producto 1 -->
-					<div class="card-product">
-						<div class="container-img">
-							<img src="./img/1.jpeg" width="270" height="270" alt="Cafe Irish" />
-							<span class="discount">-13%</span>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Pulseras</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Pulseras.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$4.60 <span>$5.30</span></p>
-						</div>
-					</div>
-					<!-- Producto 2 -->
-					<div class="card-product">
-						<div class="container-img">
-							<img
-								src="./img/10.jpeg" width="270" height="270"
-								alt="Cafe incafe-ingles.jpg"
-							/>
-							<span class="discount">-22%</span>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Pulsera</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Pulseras.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$5.70 <span>$7.30</span></p>
-						</div>
-					</div>
-					<!--  -->
-					<div class="card-product">
-						<div class="container-img">
-							<img
-								src="./img/4.jpeg" width="270" height="270"
-								alt="Cafe Australiano"
-							/>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-							</div>
-							<h3>Pulseras</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Pulseras.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$3.20</p>
-						</div>
-					</div>
-					<!--  -->
-					<div class="card-product">
-						<div class="container-img">
-							<img src="./img/8.jpeg" width="270" height="270" alt="Cafe Helado" />
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Pulseras</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Pulseras.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$5.60</p>
-						</div>
-					</div>
-				</div>
-			</section>
+<script>
+  // Fondo animado (corazones, besos, globos)
+  function iniciarElementosFlotantes() {
+    const f = document.getElementById("fondo-animado"), tipos = ["corazon", "beso", "globo"];
+    for (let i = 0; i < 25; i++) {
+      const t = tipos[Math.floor(Math.random() * tipos.length)];
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.classList.add("elemento-flotante", t);
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.style.left = `${Math.random() * 100}vw`;
+      svg.style.top = `${Math.random() * 100}vh`;
+      svg.style.animationDuration = `${8 + Math.random() * 6}s`;
+      svg.innerHTML = t === "corazon"
+        ? `<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>`
+        : t === "beso"
+          ? `<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>`
+          : `<path d="M12 2C9.24 2 7 4.24 7 7c0 2.08 1.28 3.84 3.09 4.58C10.03 12.06 10 12.53 10 13v4l-2 3h8l-2-3v-4c0-.47-.03-.94-.09-1.42C15.72 10.84 17 9.08 17 7c0-2.76-2.24-5-5-5z"/>`;
+      f.appendChild(svg);
+    }
+  }
 
-			<section class="gallery">
-				<img
-					src="./img/7.jpeg"
-					alt="Gallery Img1"
-					class="gallery-img-1"
-				/><img
-					src="./img/9.jpeg"
-					alt="Gallery Img2"
-					class="gallery-img-2"
-				/><img
-					src="./img/11.jpeg"
-					alt="Gallery Img3"
-					class="gallery-img-3"
-				/><img
-					src="./img/12.jpeg"
-					alt="Gallery Img4"
-					class="gallery-img-4"
-				/><img
-					src="./img/13.jpeg"
-					alt="Gallery Img5"
-					class="gallery-img-5"
-				/>
-			</section>
+  // Texto "FELIZ CUMPLEAÑOS" letra por letra
+  const textoFelizElem = document.getElementById('texto-feliz');
+  const textoFeliz = "💖 FELIZ CUMPLEAÑOS MI TESORO 💖";
 
-			<section class="container specials">
-				<h1 class="heading-1">Los mas pedidos</h1>
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-				<div class="container-products">
-					<!-- Producto 1 -->
-					<div class="card-product">
-						<div class="container-img">
-							<img src="./img/5.jpeg" width="270" height="270" alt="Cafe Irish" />
-							<span class="discount">-13%</span>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Anillos</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Anillos.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$4.60 <span>$5.30</span></p>
-						</div>
-					</div>
-					<!-- Producto 2 -->
-					<div class="card-product">
-						<div class="container-img">
-							<img
-								src="./img/2.jpeg" width="270" height="270"
-								alt="Cafe incafe-ingles.jpg"
-							/>
-							<span class="discount">-22%</span>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Anillos</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Collares.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$5.70 <span>$7.30</span></p>
-						</div>
-					</div>
-					<!--  -->
-					<div class="card-product">
-						<div class="container-img">
-							<img src="./img/3.jpeg" width="270" height="270" alt="Cafe Viena" />
-							<span class="discount">-30%</span>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-							</div>
-							<h3>Anillos</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Collares.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$3.85 <span>$5.50</span></p>
-						</div>
-					</div>
-					<!--  -->
-					<div class="card-product">
-						<div class="container-img">
-							<img src="./img/6.jpeg" width="270" height="270" alt="Cafe Liqueurs" />
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Anillos</h3>
-							<span class="add-cart">
-								<ul class="Ver">
-									<li><a href="Collares.html">Ver mas</a></li>
-								</ul>
-							</span>
-							<p class="price">$5.60</p>
-						</div>
-					</div>
-				</div>
-			</section>
+  async function mostrarTextoAnimado(texto, elemento, intervalo = 150) {
+    elemento.textContent = "";
+    for (let i = 0; i < texto.length; i++) {
+      elemento.textContent += texto[i];
+      await sleep(intervalo);
+    }
+  }
 
-			<section class="container blogs">
-				<h1 class="heading-1">Colaboraciones</h1>
+  // Páginas y contenido para seguir (imágenes y videos)
+  const paginas = [
+    {
+      tipo: 'imagen',
+      src: 'https://i.imgur.com/EfXbPYS.jpeg',
+      texto: "Me gusta poder compartir momentos inolvidables, y más al pensar en todo lo que vivimos en ese restaurante y espera que aun tengo una locuras por ahi. "
+    },
+    {
+      tipo: 'video',
+      src: 'https://i.imgur.com/ID6baHx.mp4',
+      texto: "Eres mi alegría diaria. No soy perfecto, pero ante tu presencia soy un poco más correcto. No importa que esté lejos: siempre me tendrás a tu lado y sobre todo, en tu corazón. "
+    },
+    {
+      tipo: 'imagen',
+      src: 'https://i.imgur.com/hnJEy05.jpeg',
+      texto: "No me importa si el tiempo que nos vemos es corto, porque es de calidad, y juntos nos escapamos de la realidad."
+    },
+    {
+      tipo: 'video',
+      src: 'https://i.imgur.com/TgDodjb.mp4',
+      texto: "Eres una estrella con un brillo radiante. Mientras escribo esto, puedo imaginar muchas cosas y así, como este momento, quiero que cada recuerdo contigo sea espectacular. "
+    },
+    {
+      tipo: 'imagen',
+      src: 'https://i.imgur.com/mVIegL8.jpeg',
+      texto: "No sé qué me depare el destino, es incierto. Pero lo que sí sé es que no importa cuándo ni dónde: estaré ahí contigo, en esos momentos en que sientas que tu mundo se derrumba. Seré tu columna la muralla china que proteja a mi Reyna. "
+    },
+    {
+      tipo: 'imagen',
+      src: 'https://i.imgur.com/OD4eu5r.jpeg',
+      texto: "Al fin ya sé con quién quiero estar. Mis noches ya no son frías. Un secreto que nunca te e dicho es que en mi chamarra siempre llevo tu carta, y esa siempre será mi mejor suerte."
+    },
+    {
+      tipo: 'imagen',
+      src: 'https://i.imgur.com/rtOsK5t.jpeg',
+      texto: "Gracias por ser tú. Entre lujos y dinero, eres mi rubí más valioso. Y al pensar que te adoro, sé que siempre serás mi gran tesoro Y no te cambiaría por la fama ni el oro."
+    },
+    {
+      tipo: 'imagen',
+      src: 'https://i.imgur.com/w5MG5n7.jpeg',
+      texto: "Aunque pienses que todo esto que estamos viviendo no puede ser tan bonito, es real. No es un juego ni una ilusión. Es algo sincero y cada día crece más."
+    },
+    {
+      tipo: 'imagen',
+      src: 'https://i.imgur.com/EMPjnZC.jpeg',
+      texto: "Jamás podré escribir en un solo texto todo lo que pasa por mi mente, porque es un enigma. Pero sí sé que eres la mujer que cuidaré, y que siempre seré tu hombre... el que te haga sonreír."
+    }
+  ];
 
-				<div class="container-blogs">
-					<div class="card-blog">
-						<div class="container-img">
-							<center>
-								<video width="300" height="400" controls>
-									<source src="./images/video.mp4" type="video/mp4">
-									Tu navegador no soporta el elemento de video.
-								</video></center>
-						</div>
-					</div>
-					<div class="card-blog">
-						<div class="container-img">
-							<center>
-								<video width="300" height="400" controls>
-									<source src="./images/video.mp4" type="video/mp4">
-									Tu navegador no soporta el elemento de video.
-								</video></center>
-						</div>
-					</div>
-					<div class="card-blog">
-						<div class="container-img">
-							<center>
-								<video width="300" height="400" controls>
-									<source src="./images/video.mp4" type="video/mp4">
-									Tu navegador no soporta el elemento de video.
-								</video></center>
-						</div>
-					</div>
-				</div>
-				<br><br>
-				
-			</section>			
-		</main>
+  // Puntero de página
+  let paginaActual = 0;
 
-		<footer class="footer">
-			<div class="container container-footer">
-				<div class="menu-footer">
-					<div class="contact-info">
-						<p class="title-footer">Información de Contacto</p>
-						<ul>
-							<li>Teléfono: 771-113-0393</li>
-							<li>EmaiL: Madvic@gmail.com</li>
-						</ul>
-					</div>
+  // Referencias
+  const seccionFeliz = document.getElementById('seccion-feliz');
+  const seccionPresentacion = document.getElementById('seccion-presentacion');
+  const seccionSeguir = document.getElementById('seccion-seguir');
+  const textoRomantico = document.getElementById('texto-romantico');
+  const contenidoPasoAPaso = document.getElementById('contenido-paso-a-paso');
+  const btnAtras = document.getElementById('btnAtras');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+  const btnInicio = document.getElementById('btnInicio');
 
-					<div class="my-account">
-						<p class="title-footer">Mi cuenta</p>
+  // Mostrar "FELIZ CUMPLEAÑOS" y avanzar solo
+  async function mostrarFeliz() {
+    paginaActual = 0;
+    seccionFeliz.classList.add("activo");
+    seccionPresentacion.classList.remove("activo");
+    seccionSeguir.classList.remove("activo");
+    btnAtras.style.display = "none";
+    btnSiguiente.style.display = "none";
+    btnInicio.style.display = "none";
 
-						<ul>
-							<li><a href="#">Lista de deseos</a></li>
-							<li><a href="#">Reembolsos</a></li>
-						</ul>
-					</div>
+    await mostrarTextoAnimado(textoFeliz, textoFelizElem, 150);
+    await sleep(1500);
+    mostrarMananitas();
+  }
 
-					<div class="newsletter">
-						<p class="title-footer">Nuestras Redes</p>
+  // Mostrar mañanitas y luego sección imágenes/videos
+  function mostrarMananitas() {
+    seccionFeliz.classList.remove("activo");
+    seccionPresentacion.classList.add("activo");
+    seccionSeguir.classList.remove("activo");
+    btnAtras.style.display = "none";
+    btnSiguiente.style.display = "none";
+    btnInicio.style.display = "none";
 
-						<div class="content">
-							<p>
-								Siguenos en nuestras redes ahora y mantente al
-								día con nuevas colecciones y ofertas exclusivas.
-							</p>
-						</div>
-						<div class="social-icons">
-							<span class="facebook">
-								<i class="fa-brands fa-facebook-f"></i>
-							</span>
-							<span class="twitter">
-								<i class="fa-brands fa-twitter"></i>
-							</span>
-							<span class="youtube">
-								<i class="fa-brands fa-youtube"></i>
-							</span>
-							<span class="pinterest">
-								<i class="fa-brands fa-pinterest-p"></i>
-							</span>
-							<span class="instagram">
-								<i class="fa-brands fa-instagram"></i>
-							</span>
-						</div>
-					</div>
-				</div>
+    // Después de 7 segundos, pasar a galería
+    setTimeout(() => {
+      mostrarGaleria();
+    }, 7000);
+  }
 
-				<div class="copyright">
-						<p>
-							Madvic &copy; 2024
-						</p>
+  // Mostrar galería con imágenes/videos y texto romántico
+  function mostrarGaleria() {
+    seccionFeliz.classList.remove("activo");
+    seccionPresentacion.classList.remove("activo");
+    seccionSeguir.classList.add("activo");
 
-					<img src="img/payment.png" alt="Pagos">
-				</div>
-			</div>
-		</footer>
+    mostrarPagina(paginaActual);
+    actualizarBotones();
+  }
 
+  // Mostrar página actual
+  function mostrarPagina(idx) {
+    const pagina = paginas[idx];
+    textoRomantico.textContent = pagina.texto;
 
-		<script
-			src="https://kit.fontawesome.com/81581fb069.js"
-			crossorigin="anonymous"
-		></script>
-	</body>
+    contenidoPasoAPaso.innerHTML = "";
+    if (pagina.tipo === "imagen") {
+      const img = document.createElement("img");
+      img.src = pagina.src;
+      img.alt = pagina.texto;
+      contenidoPasoAPaso.appendChild(img);
+    } else if (pagina.tipo === "video") {
+      const video = document.createElement("video");
+      video.src = pagina.src;
+      video.controls = true;
+      video.autoplay = false;
+      video.muted = false;
+      video.loop = false;
+      video.style.maxHeight = "320px";
+      video.style.borderRadius = "15px";
+      contenidoPasoAPaso.appendChild(video);
+    }
+  }
+
+  // Actualizar botones
+  function actualizarBotones() {
+    if (paginaActual === 0) {
+      btnAtras.style.display = "none";
+    } else {
+      btnAtras.style.display = "inline-block";
+    }
+    if (paginaActual === paginas.length - 1) {
+      btnSiguiente.style.display = "none";
+      btnInicio.style.display = "inline-block";
+    } else {
+      btnSiguiente.style.display = "inline-block";
+      btnInicio.style.display = "none";
+    }
+  }
+
+  btnAtras.onclick = () => {
+    if (paginaActual > 0) {
+      paginaActual--;
+      mostrarPagina(paginaActual);
+      actualizarBotones();
+    }
+  };
+  btnSiguiente.onclick = () => {
+    if (paginaActual < paginas.length - 1) {
+      paginaActual++;
+      mostrarPagina(paginaActual);
+      actualizarBotones();
+    }
+  };
+  btnInicio.onclick = () => {
+    mostrarFeliz();
+  };
+
+  // Iniciar animación de fondo y primer texto al cargar
+  window.onload = () => {
+    iniciarElementosFlotantes();
+    mostrarFeliz();
+  };
+</script>
+
+</body>
 </html>
